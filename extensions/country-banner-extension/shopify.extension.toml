@@ -1,0 +1,90 @@
+# Learn more about configuring your checkout UI extension:
+# https://shopify.dev/api/checkout-extensions/checkout/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2024-04"
+
+[[extensions]]
+type = "ui_extension"
+name = "country-banner-extension"
+handle = "country-banner-extension"
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/Checkout.tsx"
+target = "purchase.checkout.block.render"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+# Loads metafields on checkout resources, including the cart,
+# products, customers, and more. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_other_key"
+
+# Defines settings that will be collected from merchants installing
+# your extension. Learn more:
+# https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+# [extensions.settings]
+# [[extensions.settings.fields]]
+# key = "banner_title"
+# type = "single_line_text_field"
+# name = "Banner title"
+# description = "Enter a title for the banner"
+
+[extensions.settings]     
+ [[extensions.settings.fields]]
+ key = "bannerTitle"
+ type = "single_line_text_field"
+ name = "Banner title"
+ description = "Enter a title for the banner"
+
+ [[extensions.settings.fields]]
+ key = "bannerText"
+ type = "multi_line_text_field"
+ name = "Banner Text"
+ description = "Enter a description for the banner"
+
+ [[extensions.settings.fields]]
+ key = "bannerStatus"
+ type = "single_line_text_field"
+ name = "Banner Status"
+ description = "Select a status for the banner like Success or warning or critical"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+     value = '["critical", "info", "success", "warning", "empty"]'
+
+ [[extensions.settings.fields]]
+ key = "textSize"
+ type = "single_line_text_field"
+ name = "Text Font Size"
+ description = "Select a font size for the text"
+    [[extensions.settings.fields.validations]]
+    name = "choices"
+     value = '["base", "enextraLarge", "extraSmall", "large", "medium", "small", "default"]'
+
+ [[extensions.settings.fields]]
+ key = "countryCodes"
+ type = "single_line_text_field"
+ name = "Country Codes"
+ description = "Enter the country codes of the countries you want to display the banner and The codes should be IsoCode and commma separated for example: US, UK, AU"
+
+
