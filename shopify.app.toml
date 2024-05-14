@@ -3,7 +3,7 @@
 client_id = "1c0029b6650e32daac8653bcbe8a6334"
 name = "banner-for-country"
 handle = "banner-for-country"
-application_url = "https://ment-nominated-documents-automobiles.trycloudflare.com"
+application_url = "https://anniversary-precise-constitutes-encouraged.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://ment-nominated-documents-automobiles.trycloudflare.com/auth/callback",
-  "https://ment-nominated-documents-automobiles.trycloudflare.com/auth/shopify/callback",
-  "https://ment-nominated-documents-automobiles.trycloudflare.com/api/auth/callback"
+  "https://anniversary-precise-constitutes-encouraged.trycloudflare.com/auth/callback",
+  "https://anniversary-precise-constitutes-encouraged.trycloudflare.com/auth/shopify/callback",
+  "https://anniversary-precise-constitutes-encouraged.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

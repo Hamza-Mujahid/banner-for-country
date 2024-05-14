@@ -19,12 +19,38 @@ function Extension() {
   const { bannerTitle, bannerText, bannerStatus, textSize, countryCodes } = useSettings();
   const [isAvailable, setIsAvailable] = useState(false);
 
-  const codeOfCountries: string[] = (countryCodes as string).split(',');
+
+  // text modifier component
+  const ModifiedText = ({ myText }) => {
+    const textArr = myText?.split(' ');
+    const newtext: string[] = textArr?.map((text: string) => {
+      if (text?.includes("|%|")) {
+        const modified = text.replace(/\|%\|/g, '');
+        return <Text emphasis="bold">{modified}</Text>
+      } else {
+        return text
+      }
+    })
+    return (
+      <>
+        {newtext.map(item => {
+          return (
+            <>
+              {item}{' '}
+            </>
+          )
+        })}
+      </>
+    )
+  }
+
+
+  const codeOfCountries: string[] = (countryCodes as string)?.split(',');
 
   const { countryCode }: MailingAddress = useBillingAddress();
 
   useEffect(() => {
-    const foundFromSettigns: boolean = codeOfCountries.some(code => code === countryCode);
+    const foundFromSettigns: boolean = codeOfCountries?.some(code => code === countryCode);
     setIsAvailable(foundFromSettigns);
   }, [countryCode])
 
